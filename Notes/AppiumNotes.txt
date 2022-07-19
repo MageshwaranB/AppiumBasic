@@ -1,0 +1,64 @@
+Mobile Testing
+
+To provide solution to day to day problems like paying an electricity bill, booking a cab, we need a mobile phone
+More specifically we need a mobile phone, app and internet connectivity.
+
+Available OS
+Android, IOS, Blackberry, Windows
+
+Types of Mobile Apps
+1. Mobile Web Apps
+	These are not real apps rather they're web apps which used to open web browsers like Google Chrome. It has
+the broadest audience of all primary mobile apps types.
+
+2. Native Apps
+	These are the ones developed specifically for one platform. It can be installed mostly through Playstore or Appstore
+Apps like whatsapp, youtube falls under this category
+
+3. Hybrid Apps
+	Hybrid Apps expose the web content in the app format. It is a mixture of both native and web apps
+
+Appium
+	Appium is used for mobile testing automation which is developed and supported by sauce labs. It is an open source free software
+	It is the most popular tool to perform mobile automation testing, it satisfies most of the open source tools requirements
+Open source Tools Requirements:
+1. Application source code should not be modified for automation testing 
+2. Tests should run across emulators, simulators and real devices successfully. 
+3. Should have large open source community for continuous maintenance and support
+
+Advantages of Appium
+1. It supports cross platform i.e we can test native, web and hybrid apps
+2. Allows one to communicate with other apps
+3. No pre compilation of the code
+4. Provide support for the inbuilt apps like calendar, alarm 
+5. All webdriver compatible languages are supported
+
+Limitations
+1. Script execution would be on the slower side on virtual devices
+2. No support for toast message
+3. No parallel execution although the workaround would be to use sauce labs. 
+4. Doesn't support Android apps built with less than API Level 17 (android version less than 4.1), but if one want to automate those lower version, 
+then we need to go for selendroid 
+
+Architecture is similar to Selenium WebDriver
+Appium is server and in eclipse we'll write the code. 
+
+APK
+Android Application Package. They're similar to .exe file in windows but only difference we use it exclusively for mobile devices
+We need this apk file to automate the application, in real time application we get this file from devs but for learning purpose, we can get it
+from playstore
+
+Real devices
+Testing on real devices allows you to run the application and check its functionality, this allows one to check whether the application
+runs smoothly in customer handsets
+
+Emulators & Simulators
+These two are virtual devices. These devices are not real phones rather devices which mimic the real devices functionality
+Android Virtual devices are called Emulator
+iOS Virtual devices are called Simulator
+
+
+AVD Manager -> In android studio, using this only we'll create virtual devices.
+SDK Manager -> Provides a lot of packages for developing and testing android applications
+adb.exe -> It's a component using which we can install android applications as well. By running the appium server and this in conjunction, we'll get
+to know what are all the devices connected to the system.
