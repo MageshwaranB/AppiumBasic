@@ -46,8 +46,5 @@ public class CalculatorOperation {
 		System.out.println(Integer.parseInt(res));
 	}
 
-	@AfterClass
-	public void teardown() {
-		driver.quit();
-	}
+	
 }

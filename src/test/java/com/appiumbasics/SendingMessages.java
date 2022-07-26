@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +12,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import junit.framework.Assert;
+
+
+
+
+
 
 public class SendingMessages 
 {
@@ -29,7 +39,7 @@ public class SendingMessages
 			dc.setCapability("appActivity", "com.google.android.apps.messaging.home.HomeActivity");
 			URL url = new URL("http://127.0.0.1:4723/wd/hub");
 			driver=new AndroidDriver<WebElement>(url,dc);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
 		} catch (Exception e) {
 
 		}
@@ -37,15 +47,22 @@ public class SendingMessages
 	
 	@Test
 	public void sendMessage() throws InterruptedException {
-//		WebElement positiveAnswerButton=driver.findElement(By.id(PACKAGE_NAME_ID+"conversation_list_spam_popup_positive_button"));
-//		WebDriverWait wait=new WebDriverWait(driver, 15);
-//		wait.until(ExpectedConditions.visibilityOf(positiveAnswerButton));
-//		positiveAnswerButton.click();
 		driver.findElement(By.id("android:id/list")).click();
-		//Thread.sleep(10000);
 		WebElement positiveAnswerButton=driver.findElement(By.id(PACKAGE_NAME_ID+"conversation_list_spam_popup_positive_button"));
 		positiveAnswerButton.click();
 		driver.findElement(By.id(PACKAGE_NAME_ID+"conversation_list_google_tos_popup_positive_button")).click();
-		//driver.findElement(By.id("android:id/button1")).click();
+		driver.findElement(By.id(PACKAGE_NAME_ID+"start_chat_fab")).click();
+		WebElement recepientText=driver.findElement(By.id(PACKAGE_NAME_ID+"recipient_text_view"));
+		recepientText.sendKeys("123456892");
+		//driver.pressKey(new KeyEvent(AndroidKey.DEL));	
+		/*
+		 * To press the native keyboard keys, use pressKey
+		 */
+		driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+		String sendingText="Hi, this is your friendly neighborhood QA";
+		driver.findElement(By.id(PACKAGE_NAME_ID+"compose_message_text")).sendKeys(sendingText);
+		driver.findElement(By.id(PACKAGE_NAME_ID+"send_message_button_icon")).click();
+		String textSent=driver.findElement(By.id(PACKAGE_NAME_ID+"message_text")).getText();
+		Assert.assertEquals(sendingText, textSent);
 	}
 }
