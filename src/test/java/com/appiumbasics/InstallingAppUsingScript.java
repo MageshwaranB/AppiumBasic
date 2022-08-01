@@ -24,7 +24,7 @@ public class InstallingAppUsingScript {
 		dc.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
 		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-		dc.setCapability(MobileCapabilityType.APP, "E:\\APK Files\\APKInfo.apk");
+		dc.setCapability(MobileCapabilityType.APP, "E:\\APK Files\\screencoordinater.apk");
 	/*
 	 * Using the URL class, we can specify the appium server running url
 	 * 4723 is the port number

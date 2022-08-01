@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.appiumbasics.VerticalScrollExample">
+      <class name="com.appiumbasics.swaglabs.BasicGestures">
         <methods>
+          <include name="scrollTillFinalUser"/>
           <include name="setup"/>
-          <include name="scrollDownUsingTouchActionTest"/>
         </methods>
-      </class> <!-- com.appiumbasics.VerticalScrollExample -->
+      </class> <!-- com.appiumbasics.swaglabs.BasicGestures -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
