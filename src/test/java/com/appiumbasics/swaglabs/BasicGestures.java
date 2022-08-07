@@ -7,12 +7,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
@@ -107,8 +107,48 @@ public class BasicGestures {
 		driver.manage().window().getSize();
 	}
 	
-//	public List<WebElement> getAddCartElement() {
-//		return driver.findElementsByAccessibilityId("test-ADD TO CART");
-//	}
+	@Test
+	public void swipeFromRightToLeftTest() {
+		loginTest();
+		WebElement bagPackElement=driver.findElement(By.xpath("(//android.widget.TextView[@text='Sauce Labs Backpack'])[1]"));
+		bagPackElement.click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		scrollDown();
+		
+		WebElement addToCart=driver.findElementByAccessibilityId("test-ADD TO CART");
+		addToCart.click();
+		
+		driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-Cart\"]")).click();
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		swipeRToL();
+	}
+	
+	
+	
+	public void swipeRToL() {
+		Dimension totalSize=driver.manage().window().getSize();
+		int anchor=totalSize.getHeight() / 2;
+		Double swipeStartDouble=totalSize.getWidth()*0.7;
+		int swipeStart=swipeStartDouble.intValue();
+		Double swipeEndDouble=totalSize.getWidth()*0.2;
+		int swipeEnd=swipeEndDouble.intValue();
+		
+		new TouchAction<>(driver)
+			.press(PointOption.point(swipeStart,anchor))
+			.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+			.moveTo(PointOption.point(swipeEnd,anchor))
+			.release().perform();
+	}
+	
 	
 }
