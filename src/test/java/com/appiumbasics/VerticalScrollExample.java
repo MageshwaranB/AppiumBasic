@@ -71,6 +71,7 @@ public class VerticalScrollExample
 		 */
 		WebElement scrollToParticularElement=driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().resourceId(\"android:id/decor_content_parent\")).getChildByText("
 				+"new UiSelector().className(\"android.widget.TextView\"),\"ImageView\")"));
+		//scrollIntoViewMethod("Seek Bar");
 		scrollToParticularElement.click();
 	}
 	
@@ -98,6 +99,14 @@ public class VerticalScrollExample
 		.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(4)))
 		.moveTo(PointOption.point(0,endPoint))
 		.release().perform();
+	}
+	
+	//Call this method by passing the text of the element
+	public void scrollIntoViewMethod(String elementText) {
+		
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+elementText+"\"))").click();;
+		String val="\"" +elementText + "\"";
+		System.out.println(val);
 	}
 	
 	//	@AfterClass
