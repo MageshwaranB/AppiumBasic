@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.appiumbasics.VerticalScrollExample">
+      <class name="com.appiumbasics.ToastMessageHandling">
         <methods>
           <include name="setup"/>
-          <include name="scrollDownUsingTouchActionTest"/>
+          <include name="toastMessageTest"/>
         </methods>
-      </class> <!-- com.appiumbasics.VerticalScrollExample -->
+      </class> <!-- com.appiumbasics.ToastMessageHandling -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
